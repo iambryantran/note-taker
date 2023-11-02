@@ -1,1 +1,7 @@
-# Note Taker Starter Code
+# Note Taker 
+
+## This Repository
+
+## Usage
+
+## Links
