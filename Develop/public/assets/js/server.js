@@ -30,18 +30,22 @@ app.get('/api/notes', (req, res) => {
     // readFile asks for a callback
     const oldNotes = fs.readFileSync('../../../db/db.json', 'utf-8');
     if (oldNotes) {
-        const oldNotesParse = JSON.parse(oldNotes);
-        res.json(oldNotesParse);
+        const oldNotesParsed = JSON.parse(oldNotes);
+        res.json(oldNotesParsed);
     } else {
         res.json("[]");
     }
 });
 
-// TODO: Finish This
 app.post('/api/notes', (req, res) => {
     const newNotes = req.body;
     const oldNotes = fs.readFileSync('../../../db/db.json', 'utf-8');
+    const oldNotesParsed = JSON.parse(oldNotes);
     if (!oldNotes) {
         fs.writeFileSync('../../../db/db.json', '[]')
     }
+    console.log(oldNotesParsed);
+    oldNotesParsed.push(newNotes);
+    fs.writeFileSync('../../../db/db.json', JSON.stringify(oldNotesParsed));
+    res.json(newNotes);
 })
