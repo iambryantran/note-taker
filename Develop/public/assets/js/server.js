@@ -15,19 +15,13 @@ app.get('/notes', (req, res) =>
 res.sendFile(path.join(__dirname, '../../notes.html'))
 );
 
-app.get('/*', (req, res) =>
-res.sendFile(path.join(__dirname, '../../index.html'))
-);
-
-app.listen(PORT, () =>
-console.log(`App listening at http://localhost:${PORT}`)
-);
 
 // API Routes
 // Might need to go above *
 
 app.get('/api/notes', (req, res) => {
     // readFile asks for a callback
+    console.log('it works')
     const oldNotes = fs.readFileSync('../../../db/db.json', 'utf-8');
     if (oldNotes) {
         const oldNotesParsed = JSON.parse(oldNotes);
@@ -49,3 +43,11 @@ app.post('/api/notes', (req, res) => {
     fs.writeFileSync('../../../db/db.json', JSON.stringify(oldNotesParsed));
     res.json(newNotes);
 })
+
+app.get('/*', (req, res) =>
+res.sendFile(path.join(__dirname, '../../index.html'))
+);
+
+app.listen(PORT, () =>
+console.log(`App listening at http://localhost:${PORT}`)
+);

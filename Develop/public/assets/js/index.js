@@ -36,6 +36,8 @@ const getNotes = () =>
     }
   });
 
+getNotes();
+
 const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
@@ -190,5 +192,11 @@ if (window.location.pathname === '/notes') {
   clearBtn.addEventListener('click', renderActiveNote);
   noteForm.addEventListener('input', handleRenderBtns);
 }
+
+// fetch('/api/notes').then((res) => {
+//   res.json()
+// }).then((data) => {
+//   console.log(data)
+// });
 
 getAndRenderNotes();
