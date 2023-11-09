@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const { v4: uuid } = require('uuid');
 
-const PORT = 3001;
+const PORT = (process.env.PORT || 3001);
 
 // Borrowed and adjusted from Lesson 20
 app.use(express.json());
